@@ -1,6 +1,6 @@
--body{background: #000000 url(header.jpg) no-repeat center top;;margin:0;padding:0}
- -.example{width:900px;margin:300px auto;padding:15px;}
- -.example img { background-color: #f3f4ef; border: 1px solid #dedede; padding: 5px;} 
+body{background: #000000 url(header.jpg) no-repeat center top;;margin:0;padding:0}
+.example{width:900px;margin:300px auto;padding:15px;}
+.example img { background-color: #f3f4ef; border: 1px solid #dedede; padding: 5px;} 
 
 #gallery {
     width: 786px;
