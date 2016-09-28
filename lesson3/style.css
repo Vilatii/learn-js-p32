@@ -1,0 +1,102 @@
+a.sb,
+.sb a {
+	width: 32px;
+	height: 32px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-indent: -900em;
+	color: #333;
+	text-decoration: none;
+	line-height: 100%;
+	white-space: nowrap;
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	margin: 0 2px 5px 0;
+	
+	/* default button color */
+	background-color: #ececec;
+	border: solid 1px #b8b8b9;
+	
+	/* default box shadow */
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 1px 0 rgba(0,0,0,.1);
+	-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 1px 0 rgba(0,0,0,.1);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 1px 0 rgba(0,0,0,.1);
+
+	/* default border radius */
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+}
+/* for IE */
+*:first-child+html a.sb,
+*:first-child+html .sb a {
+	text-indent: 0;
+	line-height: 0;
+	font-size: 0;
+	overflow: hidden;
+}
+.sb {
+	margin: 0;
+	padding: 0;
+}
+.sb li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+a.sb.flat,
+.sb.flat a,
+a.sb.flat:before,
+.sb.flat a:before {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+/* ICONS
+================================================ */
+a.sb.twitter,
+.sb a.twitter {
+	background-image: url(images/twitter.png);
+}
+
+a.sb.facebook,
+.sb a.facebook {
+	background-image: url(images/facebook.png);
+}
+
+a.sb.flickr,
+.sb a.flickr {
+	background-image: url(images/flickr.png);
+}
+
+a.sb.linkedin,
+.sb a.linkedin {
+	background-image: url(images/linkedin.png);
+}
+
+a.sb.google,
+.sb a.google {
+	background-image: url(images/google.png);
+}
+
+a.sb.meetup,
+.sb a.meetup {
+	background-image: url(images/meetup.png);
+}
+
+a.sb.wordpress,
+.sb a.wordpress {
+	background-image: url(images/wordpress.png);
+}
+
+a.sb.youtube,
+.sb a.youtube {
+	background-image: url(images/youtube.png);
+}
