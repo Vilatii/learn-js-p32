@@ -1,0 +1,141 @@
+<STYLE TYPE="text/css">
+#board TD {width: 15pt; height: 15pt; font-size: 2pt; border-color: red;}
+TD.foot {font-size: 10pt;}
+#board TD.start {font-size: 8pt; border-left: 2px black solid; background:red; border-top: 2px black solid;text-align: center; color: black}
+#board TD.end {font-size: 8pt; text-align: center; color: red}
+#message {margin: 0pt; padding: 0pt; text-align: center}
+</STYLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var labirint = new Array()
+var sides = new Array("Border-Top", "Border-Right")
+for (var rows=0; rows<13; rows++)
+labirint[rows] = new Array()
+labirint[0][0] = new Array(1,1,1,1,1,1,1,1,1,1,1,1)
+labirint[0][1] = new Array(0,0,1,0,1,0,0,0,0,1,0,1)
+labirint[1][0] = new Array(1,0,0,0,1,0,1,1,1,0,1,1)
+labirint[1][1] = new Array(0,1,1,0,0,1,1,0,0,1,0,1)
+labirint[2][0] = new Array(1,0,1,0,1,0,0,1,1,0,1,1)
+labirint[2][1] = new Array(0,0,0,0,1,1,1,0,0,0,0,1)
+labirint[3][0] = new Array(0,1,1,1,1,1,0,0,0,0,1,1)
+labirint[3][1] = new Array(1,0,0,1,0,0,0,1,1,0,0,1)
+labirint[4][0] = new Array(0,0,0,0,0,0,1,1,1,1,1,1)
+labirint[4][1] = new Array(1,1,1,1,1,0,0,0,0,0,1,1)
+labirint[5][0] = new Array(0,0,0,0,1,0,1,1,1,1,0,0)
+labirint[5][1] = new Array(1,1,1,1,1,1,0,0,0,1,0,1)
+labirint[6][0] = new Array(0,0,0,0,0,0,1,1,0,1,0,1)
+labirint[6][1] = new Array(1,1,1,1,1,1,0,0,0,1,0,1)
+labirint[7][0] = new Array(1,0,1,0,0,0,1,0,1,1,0,1)
+labirint[7][1] = new Array(1,1,1,0,1,0,0,1,0,1,1,1)
+labirint[8][0] = new Array(0,0,0,1,0,0,1,1,0,0,0,0)
+labirint[8][1] = new Array(0,1,0,1,1,0,0,0,1,1,0,1)
+labirint[9][0] = new Array(0,0,0,0,0,1,1,1,1,0,1,1)
+labirint[9][1] = new Array(1,1,1,1,0,0,0,0,0,1,1,1)
+labirint[10][0] = new Array(0,0,0,0,0,1,1,1,1,1,0,0)
+labirint[10][1] = new Array(1,1,1,0,1,0,0,0,0,1,0,1)
+labirint[11][0] = new Array(0,0,1,1,1,1,1,1,1,0,0,0)
+labirint[11][1] = new Array(1,0,1,0,0,0,0,0,0,0,1,1)
+labirint[12][0] = new Array(0,0,0,0,0,1,1,1,1,0,1,0)
+labirint[12][1] = new Array(1,1,0,1,0,0,0,1,0,0,1,1)
+
+function testNext(nxt) {
+  if ((board.rows[start.rows].cells[start.cols].style.backgroundColor=="red") && (nxt.style.backgroundColor=='red')) {
+message.innerText="Я вижу, что Вы изменили своё мнение."
+board.rows[start.rows].cells[start.cols].style.backgroundColor=""
+return false
+  }
+  return true
+}
+
+function moveIt() {
+  if (!progress) return
+  switch (event.keyCode) {
+case 37: // left
+  if (labirint[start.rows][1][start.cols-1]==0) {
+if (testNext(board.rows[start.rows].cells[start.cols-1]))
+  message.innerText="Продвижение на запад..."
+start.cols--
+document.all.board.rows[start.rows].cells[start.cols].style.backgroundColor="red"
+  } else
+  message.innerText="Ух ... Вы не можете идти на запад."
+
+  break;
+case 38: // up
+  if (labirint[start.rows][0][start.cols]==0) {
+if (testNext(board.rows[start.rows-1].cells[start.cols]))
+  message.innerText="Продвижение на север..."
+start.rows--
+document.all.board.rows[start.rows].cells[start.cols].style.backgroundColor="red"
+  } else
+  message.innerText="Ух ... Вы не можете идти на север."
+
+  break;
+case 39: // right
+  
+  if (labirint[start.rows][1][start.cols]==0) {
+if (testNext(board.rows[start.rows].cells[start.cols+1]))
+  message.innerText="Продвижение на восток..."
+start.cols++
+document.all.board.rows[start.rows].cells[start.cols].style.backgroundColor="red"
+  }
+  else
+  message.innerText="Ух ... Вы не можете  идти на восток."
+
+  break;
+case 40: //down
+  if (labirint[start.rows+1]==null) return
+  if (labirint[start.rows+1][0][start.cols]==0) {
+if (testNext(board.rows[start.rows+1].cells[start.cols]))
+  message.innerText="Продвижение на юг..."
+start.rows++
+document.all.board.rows[start.rows].cells[start.cols].style.backgroundColor="red"
+  } else
+  message.innerText="Ух ... Вы не можете идти на юг."
+
+  break;
+  }
+  if (document.all.board.rows[start.rows].cells[start.cols].innerText=="end") {
+message.innerText="Вы выиграли!"
+progress=false
+  }
+}
+</script>
+ 
+<body>
+<div align="center"><strong>Используйте  стрелки на клавиатуре, чтобы двигаться от начала до конца в лабиринте.</strong></div><br>
+<p><TABLE id="board" align="center" cellspacing="0" cellpadding="0" bgcolor="green">
+  <SCRIPT LANGUAGE="JavaScript">
+for (var row = 0; row<labirint.length; row++) {
+  document.write("<TR>") 
+
+  for (var col = 0; col<labirint[row][0].length; col++) {
+document.write("<TD STYLE='")
+for (var cell = 0; cell<2; cell++) {
+  if (labirint[row][cell][col]==1) 
+document.write(sides[cell]+": 2px black solid;")
+}
+if ((0==col) && (0!=row))
+  document.write("border-left: 2px black solid;")
+if (row==labirint.length-1)
+  document.write("border-bottom: 2px black solid;")
+if ((0==row) && (0==col)) 
+  document.write(" background-color:red;' class=start>start</TD>")
+else
+ if ((row==labirint.length-1) && (col==labirint[row][0].length-1))
+   document.write("' class=end>end</TD>")
+ else
+  document.write("'> </TD>")
+  }
+  document.write("</TR>")
+}
+var start = new Object
+start.rows = 0
+start.cols = 0
+progress=true
+document.onkeydown = moveIt;
+  </SCRIPT>
+  </TABLE>
+  <p id="message"> </p></p>
+</body>
+</html>
